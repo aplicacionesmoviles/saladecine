@@ -1,112 +1,229 @@
-clase persona
-Object subclass: #Persona
-	instanceVariableNames: 'dni nombre'
+Object subclass: #Cine
+	instanceVariableNames: 'Nombre Salas Productos'
 	classVariableNames: ''
 	package: 'tpFinal'
 
+METODOS DE CLASE
+
+crearCineNomb: unNomb
+"devuelve una instancia de cine"
+^(self new) iniCineNomb: unNomb.
+
+INSTANCIA
+
+agregarUnProducto: unProdu
+"agrega un producto a la lista de productos"
+Productos add: unProdu.
 
 
+agregarUnaSala: unaSala
+"Agrega una sala a las lista de salas del cine."
+Salas add: unaSala.
 
-metodo de clase
-crearPersona: unDni nom:unNombre
-	"llama a ini persona con los argumentos recibidos"
+cantidadDeProductos
+"Retorna la cantidad de productos del cine"
+^Productos size.
 
-^(self new) iniPersona: unDni nombre:unNombre
+cantidadDeSalas
+"Retorna la cantidad de salas, tamaño del array"
+^Salas size.
 
-metodos de instancia
-
-iniPersona: unDni nombre:unNombre
-"inicializa una persona"
-dni:=unDni.
-nombre:=unNombre 
-
-modiDni: unDni
-"asigna un dni"
-dni:=unDni
-
-modiNombre: unNombre
-	"asigna un nombre"
-
-nombre:=unNombre
-
-verDni
-"devuelve el valor del dni"
-^dni
+eliminarProducto: unProdu
+"elimina un producto del cine, se elimina del array"
+Productos remove: unProdu.
 
 
-verNombre
-	"devuelve el nombre"
+eliminarUnaSala: unaSala
+"elimina una Sala de la lista de salas."
+Salas remove: unaSala.
 
-^nombre
+esVaciaProdu
+"Retorna verdadero si el cine no tiene productos falso en caso contrario"
+^Productos isEmpty.
 
 
-clase cliente 
-Persona subclass: #Cliente
-	instanceVariableNames: ''
+esVaciaSalas
+"Retorna verdadero si el cine no tiene salas falso en caso contrario"
+^Salas  isEmpty.
+
+existeUnProducto: unProdu
+"devuelve true si el producto existe"
+^Productos includes: unProdu.
+
+iniCineNomb: unNomb
+"Inicializa una instancia de Cine "
+Nombre:= unNomb.
+Salas := OrderedCollection new.
+Productos := OrderedCollection new.
+
+todosLosProductos
+"Retornas todos los productos"
+^Productos.
+
+
+FUNCION++++++++++++++++++++++++++++++++++++++++
+
+Object subclass: #Funcion
+	instanceVariableNames: 'pelicula horario publico'
 	classVariableNames: ''
 	package: 'tpFinal'
 
-metodos de clase
-crearCliente: unDni nombre:unNombre 
-	"crea un cliente"
-^(self new) iniCliente: unDni nombre:unNombre 
+crearFuncion: unaPeli horario: unHor 
+"retorna una funcion inicializada"
+^(self new) iniFuncion: unaPeli horario: unHor.
+
+CantidadDeReservas
+"retorna la cantidad de personas que reservaron una ubicacion"
+^publico size.
+
+Verpublico
+"retorna las personas que reservaron."
+^publico.
 
 
-metodo de instancia
-
-iniCliente: unDni nombre:unNombre
-"inicializa un cliente"
-dni:=unDni.
-nombre:=unNombre
+agregarUnPublico: cliente
+"agrega una persona a la lista de personas que asistiran a la funcion, se `pide una persona como parametro y se agrega a la coleccion"
+publico add: cliente
 
 
-Empleado
+eliminarPublico: cliente
+"elimina esta persona por DNI"
+publico remove: cliente.
 
-Persona subclass: #Empleado
-	instanceVariableNames: 'legajo'
-	classVariableNames: ''
-	package: 'tpFinal'
+existeClientePublico: cliente
+"retorna si existe el cliente en elregistro de reservas"
+^publico includes: cliente.
 
-metodo de clase
-
-crearEmpleado: unDni nom:unNombre legajo:unLegajo
-	"llama a ini persona con los argumentos recibidos"
-
-^(self new) iniEmpleado: unDni nombre:unNombre legajo:unLegajo
-
-metodo de instancia
-
-iniEmpleado: unDni nombre:unNombre legajo:unLegajo
-"inicializa un empleado"
-dni:=unDni.
-nombre:=unNombre.
-legajo:=unLegajo 
+iniFuncion: unaPeli horario: unHor
+"inicializa una funcion"
+pelicula := unaPeli.
+horario := unHor.
+publico := OrderedCollection new.
 
 
-modiLegajo:unLegajo
-	"modifica el legajo"
-legajo:=unLegajo 
+modiHorario: unHor
+"modifica el horaio de la funcion"
+horario:= unHor
 
-verLegajo
-
-	"devuleve el legajo"
-
-^legajo
+modiPeli: unaPeli
+"modificar la pelicula de una funcion"
+pelicula := unaPeli 
 
 
+verHorario
+"ver el horario"
+^horario.
 
-Clase Producto
+
+verPeli
+"Retorna la pelicula de la funcion"
+^pelicula.
+
+
+PRODUCTO+++++++++++++++++++++++++++++++++++++
+
 
 Object subclass: #Producto
-	instanceVariableNames: 'idProducto descripcion precio'
+	instanceVariableNames: 'idProducto nombre precio'
 	classVariableNames: ''
 	package: 'tpFinal'
 
-metodo de clase
-
-crearProducto: unId descripcion:unaDescripcion precio:unPrecio 
+crearProducto: unId nombre: unnombre precio: unPrecio 
 	"crea un producto llama al metodo de instancia iniProducto"
-^(self new) iniProducto:  unId descripcion:unaDescripcion precio:unPrecio
+^(self new) iniProducto:unId nombre: unnombre  precio: unPrecio
 
-metodos de instancia
+iniProducto: unId nombre: unNombre precio: unPrecio
+"inicializa un objeto de tipo Producto"
+idProducto := unId.
+nombre := unNombre.
+precio := unPrecio.
+
+
+modiId: unid
+"modifica el id del producto"
+idProducto := unid.
+
+
+modiNombre: nuevoNombre
+"modifica el nombre de un Producto"
+nombre := nuevoNombre.
+
+
+modiPrecio: unPrecio
+"modifica el atributo precio"
+precio:= unPrecio.
+
+
+verIDProducto
+"trae el id del productoX"
+^idProducto.
+
+verNombre
+"retorna el nombre"
+^nombre.
+
+
+verPrecio
+"retorna el precio"
+^precio.
+
+SALA+++++++++++++++++++++++++++++++++++++
+
+
+Object subclass: #Sala
+	instanceVariableNames: 'idSala capacidad funciones'
+	classVariableNames: ''
+	package: 'tpFinal'
+
+crearSala: unidSala capacidad: unacapacidad funciones: unafuncion
+"retorna una isntancia de sala inicializada"
+^(self new) iniSalaId: unidSala  capacidad: unacapacidad funciones: unafuncion
+
+
+
+
+iniSalaId: unidSala capacidad: unacapacidad funciones: unafuncion 
+"inicializa una sala" 
+idSala := unidSala.
+capacidad := unacapacidad.
+funciones := unafuncion.
+
+agregarFuncionSala: unafuncionNueva
+"agrega una funcion a la coleccion de funciones."
+funciones add: unafuncionNueva.
+
+buscarFuncionXPelicula: unapeli
+"retorna la funcion de una pelicula dada, solo trae la primera encontrada"
+^ funciones detect: [ :peli |peli verPeli = unapeli]
+ifNone: [^ nil ].
+
+
+eliminarFuncion: funcion
+"elimina la funcion"
+funciones remove: funcion.
+
+
+iniSalaId: unidSala capacidad: unacapacidad funciones: unafuncion 
+"inicializa una sala" 
+idSala := unidSala.
+capacidad := unacapacidad.
+funciones := unafuncion.
+
+modiCapacidad: unacapacidad
+capacidad := unacapacidad.
+
+modiIdSala: unidSalanuevo
+idSala := unidSalanuevo.
+
+obtenerFunciones
+"retorna todas las funciones de la sala"
+^funciones.
+
+
+
+
+
+
+
+
 

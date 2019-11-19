@@ -1,0 +1,239 @@
+|cine f1 f2 f3 f4 f5 f6 f7 s1 s2 s3 p1 p2 p3 p4 p5 p6 c1 c2 c3 c4 col1 col2 col3 col4 |
+
+"aux"
+col1 := OrderedCollection new.
+col2 := OrderedCollection new.
+col3 := OrderedCollection new.
+col4 := OrderedCollection new.
+cine := Cine  crearCineNomb: 'NuestroCine'.
+
+"---creo Funciones---"
+f1 := Funcion crearFuncion: 'AVENGERS' horario: '10:00-12:00 hs'.
+f2 := Funcion crearFuncion: 'SUPERMAN' horario: '12:00-14:00 hs'.
+f3 := Funcion crearFuncion: 'KIMINONAWA' horario: '22:00-24:00 hs'.
+f4 := Funcion crearFuncion: 'KILLBILL' horario: '16:30-18:00 hs'.
+f5 := Funcion crearFuncion: 'MADAGASCAR' horario: '10:00-12:00 hs'.
+f6 := Funcion crearFuncion: 'MATRIX' horario: '18:00-20:00 hs'.
+f7 := Funcion crearFuncion: 'RAMBITO Y RAMBON' horario: '18:00-20:00 hs'.
+
+
+
+
+"---creo productos---"
+p1 := Producto crearProducto: 100 nombre:'Pochoclos dulces' precio:300.
+p2 := Producto crearProducto: 101 nombre:'Paso de los Toros'  precio:150.
+p3 := Producto crearProducto: 102 nombre:'Nachos'  precio: 200.
+p4 := Producto crearProducto: 103 nombre:'pizza'  precio: 550.
+p5 := Producto crearProducto: 104 nombre:'Hamburguesa'  precio: 420.
+p6 := Producto crearProducto: 105 nombre:'Birringui'  precio: 170.
+
+
+"---creo salas---"
+s1 := Sala crearSala: 1 capacidad: 50. 
+s2 := Sala crearSala: 2 capacidad: 30.
+s3 := Sala crearSala: 3 capacidad: 20.
+
+" INTERACCION  EN COLECCIONES"
+
+"Agrego salas y productos al cine"
+"productos"
+cine agregarUnProducto: p1.
+cine agregarUnProducto: p2.
+cine agregarUnProducto: p3.
+cine agregarUnProducto: p4.
+cine agregarUnProducto: p5.
+cine agregarUnProducto: p6.
+"salas"
+cine agregarUnaSala: s1.
+cine agregarUnaSala: s2.
+cine agregarUnaSala: s3.
+
+"agrego funciones a las salas"
+s1 agregarFuncionSala: f1.
+s1 agregarFuncionSala: f4.
+s1 agregarFuncionSala: f5.
+s2 agregarFuncionSala: f2.
+s2 agregarFuncionSala: f6.
+s3 agregarFuncionSala: f3.
+s3 agregarFuncionSala: f7.
+
+"agrego clientes a las funciones"
+f1 agregarUnPublico: c1.
+f2 agregarUnPublico: c4.
+f6 agregarUnPublico: c4.
+f7 agregarUnPublico: c4.
+f2 agregarUnPublico: c2.
+f2 agregarUnPublico: c1.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++VERSION MAS LIVIANA++++++++++++++++++++++++++++++++++
+|cine f1 f2 f3 f4 f5 f6 f7 s1 s2 s3 s4 p1 p2 p3 p4 p5 p6 c1 c2 c3 c4 col1 col2 col3 col4 dicc|
+
+"aux"
+col1 := OrderedCollection new.
+col2 := OrderedCollection new.
+col3 := OrderedCollection new.
+col4 := OrderedCollection new.
+dicc := Dictionary new.
+
+"creo el cine"
+cine := Cine  crearCineNomb: 'NuestroCine'.
+
+"---creo Funciones---"
+f1 := Funcion crearFuncion: 'AVENGERS' horario: '10:00-12:00 hs'.
+f2 := Funcion crearFuncion: 'SUPERMAN' horario: '12:00-14:00 hs'.
+f3 := Funcion crearFuncion: 'KIMINONAWA' horario: '22:00-24:00 hs'.
+f4 := Funcion crearFuncion: 'KILLBILL' horario: '16:30-18:00 hs'.
+f5 := Funcion crearFuncion: 'MADAGASCAR' horario: '10:00-12:00 hs'.
+f6 := Funcion crearFuncion: 'MATRIX' horario: '18:00-20:00 hs'.
+f7 := Funcion crearFuncion: 'RAMBITO Y RAMBON' horario: '18:00-20:00 hs'.
+
+
+
+
+"---creo productos---"
+p1 := Producto crearProducto: 100 nombre:'Pochoclos dulces' precio:300.
+p2 := Producto crearProducto: 101 nombre:'Paso de los Toros'  precio:150.
+p3 := Producto crearProducto: 102 nombre:'Nachos'  precio: 200.
+p4 := Producto crearProducto: 103 nombre:'pizza'  precio: 550.
+p5 := Producto crearProducto: 104 nombre:'Hamburguesa'  precio: 420.
+p6 := Producto crearProducto: 105 nombre:'Birringui'  precio: 170.
+
+
+"---creo salas---"
+s1 := Sala crearSala: 1 capacidad: 50  funciones: f1.
+s2 := Sala crearSala: 2 capacidad: 40  funciones: f2.
+s3 := Sala crearSala: 3 capacidad: 30  funciones: f3.
+s4 := Sala crearSala: 4 capacidad: 80  funciones: f4.
+
+"--CREO CLIENTES---"
+c1 := Cliente crearCliente: 30111111 nombre:'Ale'  codCliente:1. 
+c2 := Cliente crearCliente: 30222222 nombre:'menem'  codCliente:2.
+c3 := Cliente crearCliente: 30333333 nombre:'Gero'  codCliente:3.
+c4 := Cliente crearCliente: 30444444 nombre:'Lucas'  codCliente:4.
+
+
+" INTERACCION  EN COLECCIONES"
+
+"Agrego salas y productos al cine"
+"productos"
+cine agregarUnProducto: p1.
+cine agregarUnProducto: p2.
+cine agregarUnProducto: p3.
+cine agregarUnProducto: p4.
+cine agregarUnProducto: p5.
+cine agregarUnProducto: p6.
+"salas"
+cine agregarUnaSala: s1.
+cine agregarUnaSala: s2.
+cine agregarUnaSala: s3.
+cine agregarUnaSala: s4.
+
+
+
+"agrego clientes a las funciones"
+f1 agregarUnPublico: c1.
+f2 agregarUnPublico: c4.
+f3 agregarUnPublico: c4.
+f4 agregarUnPublico: c4.
+f3 agregarUnPublico: c2.
+f2 agregarUnPublico: c1.
+f2 agregarUnPublico: c1.
+
+"OBTENEMOS LAS FUNCIONES"
+col1  := cine obtenerSalas.
+col2 := col1 collect: [ :sala | sala obtenerFunciones  ].
+"OBTENEMOS EL NOMBRE DE LAS PELICULAS"
+col3 := col2 collect: [ :fun | fun verPeli  ].
+"OBTENEMOS UN DICCIONARIO CON CALVE-VALOR(PELICULA-HORARIO)"
+col2 do: [ :fun|dicc at: (fun verPeli ) put: (fun verHorario ) ].
+"VER GENTE QUE RESERVO ENTRADAS"
+col4 := col2 collect: [ :fun | fun Verpublico ].
+
+
+
+"dicc inspect."
+"
+col1 inspect."
+
+
+
+
+version buscando interfaz+++++++++++++++++
+
+
+|cine f1 f2 f3 f4 f5 f6 f7 s1 s2 s3 s4 p1 p2 p3 p4 p5 p6 c1 c2 c3 c4 col1 col2 col3 col4 dicc   p|
+
+"aux"
+col1 := OrderedCollection new.
+col2 := OrderedCollection new.
+col3 := OrderedCollection new.
+col4 := OrderedCollection new.
+dicc := Dictionary new.
+
+"creo el cine"
+cine := Cine  crearCineNomb: 'NuestroCine'.
+
+"---creo Funciones---"
+f1 := Funcion crearFuncion: 'AVENGERS' horario: '10:00-12:00 hs'.
+f2 := Funcion crearFuncion: 'SUPERMAN' horario: '12:00-14:00 hs'.
+f3 := Funcion crearFuncion: 'KIMINONAWA' horario: '22:00-24:00 hs'.
+f4 := Funcion crearFuncion: 'KILLBILL' horario: '16:30-18:00 hs'.
+f5 := Funcion crearFuncion: 'MADAGASCAR' horario: '10:00-12:00 hs'.
+f6 := Funcion crearFuncion: 'MATRIX' horario: '18:00-20:00 hs'.
+f7 := Funcion crearFuncion: 'RAMBITO Y RAMBON' horario: '18:00-20:00 hs'.
+
+
+
+
+"---creo productos---"
+p1 := Producto crearProducto: 100 nombre:'Pochoclos dulces' precio:300.
+p2 := Producto crearProducto: 101 nombre:'Paso de los Toros'  precio:150.
+p3 := Producto crearProducto: 102 nombre:'Nachos'  precio: 200.
+p4 := Producto crearProducto: 103 nombre:'pizza'  precio: 550.
+p5 := Producto crearProducto: 104 nombre:'Hamburguesa'  precio: 420.
+p6 := Producto crearProducto: 105 nombre:'Birringui'  precio: 170.
+
+
+"---creo salas---"
+s1 := Sala crearSala: 1 capacidad: 50  funciones: f1.
+s2 := Sala crearSala: 2 capacidad: 40  funciones: f2.
+s3 := Sala crearSala: 3 capacidad: 30  funciones: f3.
+s4 := Sala crearSala: 4 capacidad: 80  funciones: f4.
+
+"--CREO CLIENTES---"
+c1 := Cliente crearCliente: 30111111 nombre:'Ale'  codCliente:1. 
+c2 := Cliente crearCliente: 30222222 nombre:'menem'  codCliente:2.
+c3 := Cliente crearCliente: 30333333 nombre:'Gero'  codCliente:3.
+c4 := Cliente crearCliente: 30444444 nombre:'Lucas'  codCliente:4.
+
+" INTERACCION  EN COLECCIONES"
+
+"Agrego salas y productos al cine"
+"productos"
+cine agregarUnProducto: p1.
+cine agregarUnProducto: p2.
+cine agregarUnProducto: p3.
+cine agregarUnProducto: p4.
+cine agregarUnProducto: p5.
+cine agregarUnProducto: p6.
+"salas"
+cine agregarUnaSala: s1.
+cine agregarUnaSala: s2.
+cine agregarUnaSala: s3.
+cine agregarUnaSala: s4.
+
+
+
+"agrego clientes a las funciones"
+f1 agregarUnPublico: c1.
+f2 agregarUnPublico: c4.
+f3 agregarUnPublico: c4.
+f4 agregarUnPublico: c4.
+f3 agregarUnPublico: c2.
+f2 agregarUnPublico: c1.
+f2 agregarUnPublico: c1.
+
+"+++++++++++++++++++++++++++++++++INTERFAZ CLIENTE++++++++++++++++++++++++++++++++++++++++++"
+UIManager default request: 'Title of the request'.
+
